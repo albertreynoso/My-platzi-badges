@@ -28,6 +28,7 @@ const api = {
       return callApi("/badges");
     },
     create(badge) {
+      // throw new Error("505: Server Error");
       return callApi(`/badges`, {
         method: "POST",
         body: JSON.stringify(badge),
@@ -35,6 +36,7 @@ const api = {
     },
     read(badgeId) {
       return callApi(`/badges/${badgeId}`);
+      // throw new Error("Esto acaba de fallar");
     },
     update(badgeId, updates) {
       return callApi(`/badges/${badgeId}`, {

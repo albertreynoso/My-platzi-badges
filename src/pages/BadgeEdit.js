@@ -5,12 +5,12 @@ import BadgeForm from "../components/BadgeForm";
 import Api from "../Api";
 import PageLoading from "../components/PageLoading";
 
-import "./styles/BadgeNew.css";
+import "./styles/BadgeEdit.css";
 import Logo from "../images/platzi-conf.svg";
 
-export default class BadgeNew extends Component {
+export default class BadgeEdit extends Component {
   state = {
-    loading: false,
+    loading: true,
     error: null,
     form: {
       firstName: "",
@@ -22,6 +22,19 @@ export default class BadgeNew extends Component {
     },
   };
 
+  componentDidMount() {
+    this.fetchData();
+  }
+  fetchData = async (e) => {
+    this.setState({ loading: true, error: null });
+
+    try {
+      const data = await Api.badges.read(this.props.match.params.badgeId);
+      this.setState({ loading: false, form: data });
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
+  };
   handleChange = (e) => {
     this.setState({
       form: {
@@ -34,7 +47,7 @@ export default class BadgeNew extends Component {
     e.preventDefault(); // this prevents updating the page or redirectioning
     this.setState({ loading: true, error: null });
     try {
-      await Api.badges.create(this.state.form);
+      await Api.badges.update(this.props.match.params.badgeId, this.state.form);
       this.setState({ loading: false });
       this.props.history.push("/badges");
     } catch (error) {
@@ -48,9 +61,9 @@ export default class BadgeNew extends Component {
     }
     return (
       <React.Fragment>
-        <div className="BadgeNew__hero">
+        <div className="BadgeEdit__hero">
           <img
-            className="img-fluid BadgeNew__hero-image"
+            className="img-fluid BadgeEdit__hero-image"
             src={Logo}
             alt="imageheader"
           />
@@ -69,7 +82,7 @@ export default class BadgeNew extends Component {
                 />
               </div>
               <div className="col-6">
-                <h1>New Attendant</h1>
+                <h1>Edit Attendant</h1>
                 <BadgeForm
                   onChange={this.handleChange}
                   onSubmit={this.handleSubmit}

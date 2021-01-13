@@ -27,7 +27,7 @@ class Badge extends Component {
           <div>@{this.props.twitter}</div>
         </div>
         <div className="Badge__footer">
-          <div>#{this.props.event}</div>
+          <div>#PlatziConf</div>
         </div>
       </div>
     );

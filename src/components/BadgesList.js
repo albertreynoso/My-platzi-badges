@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import "./styles/BadgesList.css";
 import "../pages/styles/Badges.css";
@@ -29,29 +30,30 @@ class BadgesList extends Component {
   render() {
     if (this.props.badges.length === 0) {
       return (
-        <div className="Badges__container">
-          <figure>
-            <img src={AstroLogo} alt="astronautas" style={{ width: "30vw" }} />
-            <figcaption>
-              <h3 style={{ textAlign: "center" }}>No badges found</h3>
-            </figcaption>
-          </figure>
-        </div>
+        <figure>
+          <img src={AstroLogo} alt="astronautas" style={{ width: "30vw" }} />
+          <figcaption>
+            <h3 style={{ textAlign: "center" }}>No badges found</h3>
+          </figcaption>
+        </figure>
       );
     }
     return (
       <div className="BadgesList">
-        <div className="Badges__container">
-          <ul className="list-unstyled">
-            {this.props.badges.map((badge) => {
-              return (
-                <li key={badge.id}>
+        <ul className="list-unstyled">
+          {this.props.badges.map((badge) => {
+            return (
+              <li key={badge.id}>
+                <Link
+                  className="text-reset text-decoration-none"
+                  to={`/badges/${badge.id}`}
+                >
                   <BadgesListItem badge={badge} />
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }

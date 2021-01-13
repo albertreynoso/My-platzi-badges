@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import BadgesList from "../components/BadgesList";
 import Api from "../Api";
 import PageLoading from "../components/PageLoading";
+import MiniLoader from "../components/MiniLoader";
 import PageError from "../components/PageError";
 
 export default class Badges extends Component {
@@ -33,10 +34,12 @@ export default class Badges extends Component {
   }
   componentWillUnmount() {
     console.log("6. componentWillUnmount()");
+    clearInterval(this.intervalId);
   }
   componentDidMount() {
     console.log("3. componentDidMount()");
     this.fetchData();
+    this.intervalId = setInterval(this.fetchData, 5000);
   }
   fetchData = async () => {
     this.setState({ loading: true, error: null });
@@ -49,7 +52,7 @@ export default class Badges extends Component {
   };
   render() {
     console.log("2/4. render()");
-    if (this.state.loading === true) {
+    if (this.state.loading === true && !this.state.data) {
       return <PageLoading />;
     }
     console.log("2/4. render()");
@@ -75,8 +78,9 @@ export default class Badges extends Component {
               New Badge
             </Link>
           </div>
+          <BadgesList badges={this.state.data} />
+          {this.state.loading && <MiniLoader />}
         </div>
-        <BadgesList badges={this.state.data} />
       </React.Fragment>
     );
   }
