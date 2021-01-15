@@ -46,96 +46,13 @@
       "avatarUrl": "https://www.gravatar.com/avatar/00e35de53a06a655fe5b6ac8b96bdb84?d=identicon"
     },
     {
-      "firstName": "Alberto ",
-      "lastName": "Patiño",
-      "email": "albertorolibert@gmail.com",
-      "jobTitle": "Software Engineer",
-      "twitter": "@frack",
-      "id": "_IHG53m"
-    },
-    {
-      "firstName": "alberto",
-      "lastName": "patiño",
-      "email": "albertorolibert@gmail.com",
-      "jobTitle": "engineer",
-      "twitter": "@href",
-      "id": "M0C2_Fu"
-    },
-    {
-      "firstName": "marcos",
-      "lastName": "rivera",
-      "email": "marcosrivera@gmail.com",
-      "jobTitle": "engineer",
-      "twitter": "@franco",
-      "avatarUrl": "",
-      "id": "lZu3Qmo"
-    },
-    {
-      "firstName": "aasdf",
-      "lastName": "asdfasdf",
-      "email": "sadfasdasf",
-      "jobTitle": "sdfsdfs",
-      "twitter": "sadfsdf",
-      "avatarUrl": "",
-      "id": "-05XC5V"
-    },
-    {
-      "firstName": "sdfsadf",
-      "lastName": "asdfsdfsaf",
-      "email": "sadfsadfsdf",
-      "jobTitle": "sadfsdf",
-      "twitter": "sdfsdfsd",
+      "firstName": "Felipe",
+      "lastName": "Garmendia",
+      "email": "feligarmen@gmail.com ",
+      "jobTitle": "graphic designer",
+      "twitter": "franco",
       "avatarUrl": "https://www.gravatar.com/avatar?d=identicon",
-      "id": "qNvODiw"
-    },
-    {
-      "firstName": "asd",
-      "lastName": "sdf",
-      "email": "sdfsdfsdf",
-      "jobTitle": "",
-      "twitter": "",
-      "id": "th4f6-R"
-    },
-    {
-      "firstName": "sdf",
-      "lastName": "",
-      "email": "",
-      "jobTitle": "",
-      "twitter": "",
-      "id": "ZSDHhND"
-    },
-    {
-      "firstName": "sdf",
-      "lastName": "",
-      "email": "",
-      "jobTitle": "",
-      "twitter": "",
-      "id": "re4_BoK"
-    },
-    {
-      "firstName": "sadfsdf",
-      "lastName": "",
-      "email": "",
-      "jobTitle": "",
-      "twitter": "",
-      "id": "tfgoNxp"
-    },
-    {
-      "firstName": "sdfasdf",
-      "lastName": "asfdsfsdfds",
-      "email": "sadfasdfas@gmail.com",
-      "jobTitle": "sadfsdf",
-      "twitter": "sdfsdf",
-      "id": "McMYZ4w"
-    },
-    {
-      "firstName": "yuryurtyu",
-      "lastName": "ytryur",
-      "email": "tyuytu",
-      "jobTitle": "tyutyu",
-      "twitter": "tryutryu",
-      "avatarUrl": "https://www.gravatar.com/avatar?d=identicon",
-      "id": "GhgJQUE"
+      "id": "4Usig2N"
     }
   ]
 }

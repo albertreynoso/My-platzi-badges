@@ -13,13 +13,28 @@ export default class BadgeDetailsContainer extends Component {
       loading: true,
       error: null,
       data: {},
+      modalIsOpen: false,
     };
   }
-
-  componentDidMount() {
-    console.log("3. ");
-    this.fetchData();
-  }
+  handleModalOpen = (e) => {
+    this.setState({ modalIsOpen: true });
+  };
+  handleModalClose = (e) => {
+    this.setState({ modalIsOpen: false });
+  };
+  deleteBadge = async () => {
+    this.setState({ loading: true, error: null });
+    try {
+      await Api.badges.remove(this.props.match.params.badgeId);
+      this.setState({ loading: false });
+      this.props.history.push("/badges");
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
+  };
+  handleDeleteBadge = (e) => {
+    this.deleteBadge();
+  };
   fetchData = async () => {
     this.setState({ loading: true, error: null });
     try {
@@ -29,6 +44,11 @@ export default class BadgeDetailsContainer extends Component {
       this.setState({ loading: false, error: error });
     }
   };
+
+  componentDidMount() {
+    console.log("3. ");
+    this.fetchData();
+  }
   render() {
     console.log("2/4.");
     if (this.state.loading) {
@@ -37,6 +57,14 @@ export default class BadgeDetailsContainer extends Component {
     if (this.state.error) {
       return <PageError />;
     }
-    return <BadgeDetails badge={this.state.data} />;
+    return (
+      <BadgeDetails
+        badge={this.state.data}
+        onCloseModal={this.handleModalClose}
+        onOpenModal={this.handleModalOpen}
+        onDeleteBadge={this.handleDeleteBadge}
+        modalIsOpen={this.state.modalIsOpen}
+      />
+    );
   }
 }

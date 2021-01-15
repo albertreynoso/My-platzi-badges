@@ -64,7 +64,7 @@ export default class BadgeForm extends Component {
               onChange={this.props.onChange}
               className="form-control"
               name="twitter"
-              placeholder="@frnacis"
+              placeholder="frnacis"
               value={this.props.stateForm.twitter}
             />
           </div>

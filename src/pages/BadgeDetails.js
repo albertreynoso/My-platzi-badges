@@ -2,11 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Badge from "../components/Badge";
+import DeleteBadgeModal from "../components/DeleteBadgeModal";
 
 import ConLogo from "../images/platzi-conf.svg";
 import "./styles/BadgeDetails.css";
+// //custom hook
+function useIncreaseCount(max) {
+  const [count, setCount] = React.useState(0);
+  if (count > max) {
+    setCount(0);
+  }
+  return [count, setCount];
+}
 
 export default function BadgeDetails(props) {
+  // normal hook
+  //   const [count, setCount] = React.useState(0);
+  //custom hook
+  const [count, setCount] = useIncreaseCount(5);
   const badge = props.badge;
   return (
     <React.Fragment>
@@ -16,7 +29,7 @@ export default function BadgeDetails(props) {
             <div className="col-6">
               <img src={ConLogo} alt="logo de conferencia" />
             </div>
-            <div className="col-6">
+            <div className="col-6 BadgeDetails__hero-attendant-name">
               <h1>
                 {badge.firstName}
                 {badge.lastName}
@@ -37,6 +50,13 @@ export default function BadgeDetails(props) {
             />
           </div>
           <div className="col">
+            <button
+              onClick={() => {
+                setCount(count + 1);
+              }}
+            >
+              Increase count: {count}
+            </button>
             <h2>Actions</h2>
             <div>
               <div>
@@ -48,7 +68,14 @@ export default function BadgeDetails(props) {
                 </Link>
               </div>
               <div>
-                <button className="btn btn-danger">Delete</button>
+                <button onClick={props.onOpenModal} className="btn btn-danger">
+                  Delete
+                </button>
+                <DeleteBadgeModal
+                  onClose={props.onCloseModal}
+                  isOpen={props.modalIsOpen}
+                  onDeleteBadge={props.onDeleteBadge}
+                />
               </div>
             </div>
           </div>
